@@ -9,6 +9,9 @@ module SpreeTcb
       g.test_framework :rspec
     end
 
+    # Add concerns to autoload paths
+    config.autoload_paths += %W[#{config.root}/app/models/concerns]
+
     initializer 'spree_tcb.environment', before: :load_config_initializers do |_app|
       SpreeTcb::Config = SpreeTcb::Configuration.new
     end
