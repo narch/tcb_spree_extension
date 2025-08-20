@@ -1,6 +1,42 @@
 # Spree Tcb
 
-This is a Tcb extension for [Spree Commerce](https://spreecommerce.org), an open source e-commerce platform built with Ruby on Rails.
+This is a Tcb extension for [Spree Commerce](https://spreecommerce.org), an open source e-commerce platform built with Ruby on Rails. This extension contains custom functionality for TCB's employee ordering system.
+
+## Features
+
+### Per-Store Registration Control
+This extension allows you to disable user registration on a per-store basis, perfect for employee-only stores or multi-tenant configurations.
+
+**Disable registration for a store:**
+```ruby
+store = Spree::Store.find_by(code: 'your_store_code')
+store.set_preference(:registration_disabled, true)
+store.save!
+```
+
+**Enable registration for a store:**
+```ruby
+store = Spree::Store.find_by(code: 'your_store_code')
+store.set_preference(:registration_disabled, false)
+store.save!
+```
+
+When registration is disabled:
+- Signup links are hidden from the login page
+- Direct access to registration URLs redirects to login
+- Users see a message to contact their administrator for account access
+
+### Employee Payment Method
+Includes a "No Payment Required" payment method for employee orders that:
+- Auto-approves orders without payment details
+- Generates employee-specific authorization codes
+- Streamlines checkout for internal ordering
+
+### Address Geocoding
+Automatically geocodes addresses and stock locations using OpenCage:
+- Adds latitude/longitude to addresses and stock locations
+- Triggers on address changes or new records
+- Requires OpenCage API key in Rails credentials
 
 ## Installation
 

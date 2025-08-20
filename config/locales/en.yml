@@ -3,5 +3,7 @@
 
 en:
   spree:
+    employee_login: "Employee Login"
+    registration_disabled: "Registration is disabled. Please contact your administrator for account access."
     tcb:
       hello: "Hello SpreeTcb"
