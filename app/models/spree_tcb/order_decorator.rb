@@ -1,6 +1,11 @@
 module SpreeTcb
   module OrderDecorator
     def self.prepended(base)
+      base.include SpreeTcb::MultiTenant::TenantScoped
+      
+      # Order number should be unique per tenant
+      base.validates :number, uniqueness: { scope: :tenant_id }
+      
       base.class_eval do
         # Skip payment confirmation for employee orders
         def confirmation_required?

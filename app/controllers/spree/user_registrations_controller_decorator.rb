@@ -1,4 +1,4 @@
-module SpreeTcb
+module Spree
   module UserRegistrationsControllerDecorator
     def self.prepended(base)
       base.before_action :check_registration_enabled
@@ -16,4 +16,4 @@ module SpreeTcb
 end
 
 # This will be loaded when the controller is defined
-::Spree::UserRegistrationsController.prepend SpreeTcb::UserRegistrationsControllerDecorator if defined?(::Spree::UserRegistrationsController)
+::Spree::UserRegistrationsController.prepend Spree::UserRegistrationsControllerDecorator if defined?(::Spree::UserRegistrationsController)

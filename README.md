@@ -4,6 +4,32 @@ This is a Tcb extension for [Spree Commerce](https://spreecommerce.org), an open
 
 ## Features
 
+### Multi-Tenancy Support
+Complete data isolation between stores (tenants) with shared infrastructure:
+- Each Spree::Store acts as a tenant with isolated data
+- Products, orders, users, and configurations are tenant-specific
+- Shared reference data (countries, states) across all tenants
+- Automatic tenant scoping for all queries and creates
+
+**Create a new tenant:**
+```bash
+bundle exec rake spree_tcb:multi_tenant:create_tenant[name,code,url,email]
+```
+
+**Assign existing data to a tenant:**
+```bash
+bundle exec rake spree_tcb:multi_tenant:assign_to_tenant[store_code]
+```
+
+**Switch tenant context (console/testing):**
+```ruby
+store = Spree::Store.find_by(code: 'tcb')
+SpreeTcb::MultiTenant.with_tenant(store) do
+  # All operations are scoped to this tenant
+  Spree::Product.all # Only shows products for 'tcb' store
+end
+```
+
 ### Per-Store Registration Control
 This extension allows you to disable user registration on a per-store basis, perfect for employee-only stores or multi-tenant configurations.
 

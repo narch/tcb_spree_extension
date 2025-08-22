@@ -11,6 +11,7 @@ module SpreeTcb
 
     # Add concerns to autoload paths
     config.autoload_paths += %W[#{config.root}/app/models/concerns]
+    config.autoload_paths += %W[#{config.root}/app/controllers/concerns]
 
     initializer 'spree_tcb.environment', before: :load_config_initializers do |_app|
       SpreeTcb::Config = SpreeTcb::Configuration.new
