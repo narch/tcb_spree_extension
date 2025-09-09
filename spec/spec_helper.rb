@@ -5,6 +5,9 @@ require 'dotenv/load'
 
 require File.expand_path('../dummy/config/environment.rb', __FILE__)
 
+# Load our extension's files
+Dir[File.join(File.dirname(__FILE__), '../app/models/concerns/**/*.rb')].each { |f| require f }
+
 require 'spree_dev_tools/rspec/spec_helper'
 require 'spree_tcb/factories'
 

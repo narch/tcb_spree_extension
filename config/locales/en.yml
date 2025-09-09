@@ -1,9 +1,8 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
+---
 en:
   spree:
-    employee_login: "Employee Login"
-    registration_disabled: "Registration is disabled. Please contact your administrator for account access."
+    employee_login: Employee Login
+    registration_disabled: Registration is disabled. Please contact your administrator
+      for account access.
     tcb:
-      hello: "Hello SpreeTcb"
+      hello: Hello SpreeTcb
